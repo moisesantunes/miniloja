@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+</head>
+
+<body>
+<h1> Olá 
+	<% if(user){ %>
+		<%= user.username %>
+	<%}%>
+</h1>
+<p class="" >
+	<a href="/" >Inicio</a>
+	<%if( dash == null ){ %>
+		<a href="/dashboardForm" >Criar</a> 
+	<%} else{ %>
+		<a href="/dashboardEdit" >Editar</a> %>
+	<%}%>
+</p>
+<% if(!dash){ %>
+	<p>Ainda nao tem cadastro, fique a vontade para fazer o seu!</p>
+<% } %>
+<% if(dash) {%>
+	<h2 class=""><%= dash.nomeComp %> </h2>
+	<p class=''><%=  dash.email %></p>
+	<p class=''><%= dash.cep %></p>
+	<p class=''><%= dash.endereco%> | <%= dash.numCasa %> |<%= dash.complemento %></p>
+	<p class=''><%= dash.telefone[0]%> |<%= dash.telefone[1]%></p>
+<% } %>
+<!--
+<form action="/salvarDashboard" method="post" accept-charset="utf-8">
+  <input type="text" name="nomeComp" id="" placeholder="Nome Completo">
+  <input type="email" name="email" id="email" placeholder="Email">
+  <input type="text" name="cep" id="" placeholder="cep">
+  <input type="text" name="endereco" id="" placeholder="Endereço">
+  <input type="number" name="numCasa" id="num_casa" placeholder="Numero da casa">
+  <input type="text" name="complemento" id="" placeholder="Complemento">
+  <input type="tel" name="telefone" id="telefone" placeholder="telefone">
+  <input type="tel" name="telefone" id="telefone" placeholder="telefone">
+  <input type="submit" value="Salvar">
+</form>
+-->
+
+</body>
+
+</html>

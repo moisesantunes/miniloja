@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
+	<title >Meus Catalogos</title>
+</head>
+<body onload="dpsmanda()">
+	<h1>oi</h1>
+
+ <hr>
+ <% if(user) { %>
+ <h2><%= user.username %> Logado!!!</h2>
+ <a href="/" >Inicio</a>
+ <a href="/meusCatalogos" >Meus Catalogos-</a>
+<br>
+ <a href="/logout" >Sair</a>
+<%}%>
+
+
+
+
+<section class="">
+
+
+	+++++++++++++
+<% produtos.forEach((item)=>{ %>
+<p> nome<%= item.nome %></p>
+	<% item.imagens.forEach((i)=>{ %>
+
+		<p class="src1" onclick="dpsmanda(this.id)" >
+		<%= i %>
+		</p>
+		<img  src="<%= i %>">
+	<%})%>
+
+	
+<%})%>
+
+
+____________________________
+
+</section>
+
+
+<script src="/js/script.js">	</script>
+
+<script>
+(function () { var script = document.createElement('script'); script.src="//cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() } })();
+
+</script>
+</body>
+</html>

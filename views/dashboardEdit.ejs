@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+</head>
+
+<body>
+<h1> Olá 
+	<% if(user){ %>
+		<%= user.username %>
+	<%}%>
+	<br>
+	<sub>modo edição</sub>
+</h1>
+<p class="" >
+	<a href="/dashboard" >Voltar</a>
+	<a href="/" >Inicio</a>
+</p>
+	
+
+
+<!--
+	<h2 class="">Nome </h2>
+	<p class=''>email</p>
+	<p class=''>cep</p>
+	<p class=''>endereco | num | complemento</p>
+	<p class=''>tel 1 | tel 2</p>
+-->
+
+<form action="/salvarDashboard?_method=PUT" method="post" accept-charset="utf-8">
+  <input type="text" name="nomeComp" value="<%= dash.nomeComp %>"  id="" placeholder="Nome Completo">
+  <input type="email" name="email" value="<%= dash.email %>" id="email" placeholder="Email">
+  <input type="text" name="cep"value="<%= dash.cep %>" id="" placeholder="cep">
+  <input type="text" name="endereco" value="<%= dash.endereco %>" id="" placeholder="Endereço">
+  <input type="number" name="numCasa" value="<%= dash.numCasa %>" id="num_casa" placeholder="Numero da casa">
+  <input type="text" name="complemento" value="<%= dash.complemento %>" id="" placeholder="Complemento">
+  <input type="tel" name="telefone" value="<%=dash.telefone[0] %>"id="telefone" placeholder="telefone">
+  <input type="tel" name="telefone" value="<%= dash.telefone[1] %>"  id="telefone" placeholder="telefone">
+  <input type="submit" value="Salvar">
+</form>
+</body>
+
+</html>

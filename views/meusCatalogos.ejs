@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
+	<title >Meus Catalogos</title>
+</head>
+<body>
+	<h1>Meus Catalogos</h1>
+<a href="/login" >Entrar</a>|
+ <a href="/signup" >Cadastrar</a>
+ <hr>
+ <% if(user) { %>
+ <h2><%= user.username %> Logado!!!</h2>
+ <a href="/" >Inicio</a>
+ <a href="/dashboard" >Meu Cadastro</a>
+
+<br>
+ <a href="/logout" >Sair</a>
+
+<%}%>
+
+<section class="">
+<% catalogos.forEach((item,index)=>{ %>
+	<div class="">
+	<h3 class=""><%=index+1 %>-)	<%= item.nome %></h3>
+	<a href="/detalharCatalogo/<%= item._id %>" class="" >Ver catalogo</a>
+	<a href="/cadastrarProduto/<%= item._id %>" class="" > Cadastrar um Produto</a>
+
+	</div>	
+<%})%>
+
+</section>
+
+<script src="/js/script.js">	</script>
+</body>
+</html>

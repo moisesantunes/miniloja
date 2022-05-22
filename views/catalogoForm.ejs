@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Criação de Catalogo</title>
+  <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+</head>
+
+<body>
+<h1> Olá 
+	<% if(user){ %>
+		<%= user.username %>
+	<%}%>
+</h1>
+<nav class="" >
+	<a href="/meusCatalogos" >Meus Catalogos</a>
+</nav>
+<br>
+<h2 class="">Criação de catalogo</h2>
+<form action="/salvarCatalogo" method="post" accept-charset="utf-8"><br>
+  <input type="text" name="nome" id="" placeholder="Nome do catalogo"><br>
+  <input type="text" name="estado" id="catEstado" value="ativo" readonly><br>
+  <input type="text" name="categoria" id="" placeholder="Categoria"><br>
+  <textarea class="" name="descricao" placeholder="Descrição do catalogo aqui">
+  </textarea><br>
+  <input type="submit" value="Salvar">
+</form>
+</body>
+
+</html>

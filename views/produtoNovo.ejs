@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Page Title</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
+</head>
+<body>
+	<h1 id="topo">Multicatalogos</h1>
+	<%= catalogo %>
+
+<form action="/cadastrarProduto/<%= catalogo %>" method="post" >
+
+	<input type="text" name="nome"  placeholder="Nome do produto" ><br>
+	<input type="text" name="fabricante" placeholder="Fabricante"  ><br>
+	<input type="number" name="pesoMl" placeholder="Peso em ml"  >	<br>
+	<input type="number" name="precoOriginal" placeholder="Preço cheio"  ><br>	
+	<input type="number" name="precoVenda" placeholder="Preço de venda"   ><br>
+	<input type="number" name="desconto" placeholder="Desconto em %"  ><br>
+	<input type="number" name="qtdEstoque" placeholder="Quantidade em estoque"  ><br>
+	<textarea name="descricao" placeholder="Entre com informação adicional do produto"   ></textarea><br>
+	
+	
+	<section id="boxImgs">
+		<input type="file" id="img1" class="imgs" accept="image/*"
+		 onchange="preview_image(event, this.id)"
+		 name="imgnomes">
+		<input type="hidden"id="base_img1" 
+		name="imagens">
+		<img id="output_image_img1"/>
+		<hr><br>
+		
+		<input type="file" id="img2" class="imgs" accept="image/*"
+		 onchange="preview_image(event, this.id)"
+		 name="imgnomes">
+		<input type="hidden"id="base_img2" 
+		name="imagens">
+		<img id="output_image_img2"/>
+		<hr><br>
+
+
+	</section>	
+	<a href="javascript:addImg();">Add Imagem</a	
+	
+	<br>
+	<hr>
+	<button>Salvar</button>		
+</form>
+
+
+<script src="/js/script.js">	</script>
+<script >
+(function () { var script = document.createElement('script'); script.src="//cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() } })();
+</script>
+</body>
+</html>

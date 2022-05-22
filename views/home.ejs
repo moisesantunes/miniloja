@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Page Title</title>
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
+	<title >Bem vindo a multicatalogo</title>
+</head>
+<body>
+	<h1>Multicatalogos</h1>
+<a href="/login" >Entrar</a>|
+ <a href="/signup" >Cadastrar</a>
+ <hr>
+ <% if(user) { %>
+ <h2><%= user.username %> Logado!!!</h2>
+ <a href="/dashboard" >Meu Cadastro</a>
+ <a href="/meusCatalogos" >Meus Catalogos</a>
+ <a href="/criarCatalogo" >Criar Catalogo</a>
+<br>
+ <a href="/logout" >Sair</a>
+<%}%>
+
+<script src="/js/script.js">	</script>
+</body>
+</html>
