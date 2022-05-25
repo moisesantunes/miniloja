@@ -23,23 +23,17 @@
 
 <section class="">
 
-
-	+++++++++++++
-<% produtos.forEach((item)=>{ %>
-<p> nome<%= item.nome %></p>
-	<% item.imagens.forEach((i)=>{ %>
-
-		<p class="src1" onclick="dpsmanda(this.id)" >
-		<%= i %>
-		</p>
-		<img  src="<%= i %>">
-	<%})%>
+	<% produtos.forEach((item)=>{ %>
+	<p> nome<%= item.nome %></p>
+		<% item.imagens.forEach((i)=>{ %>
+			<p class="src1" style="display:none" >
+			<%= i %>
+			</p>
+			<img  src="<%= i %>">
+		<%})%>
 
 	
 <%})%>
-
-
-____________________________
 
 </section>
 

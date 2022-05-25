@@ -13,39 +13,35 @@
 <form action="/cadastrarProduto/<%= catalogo %>" method="post" >
 
 	<input type="text" name="nome"  placeholder="Nome do produto" ><br>
-	<input type="text" name="fabricante" placeholder="Fabricante"  ><br>
-	<input type="number" name="pesoMl" placeholder="Peso em ml"  >	<br>
-	<input type="number" name="precoOriginal" placeholder="Preço cheio"  ><br>	
 	<input type="number" name="precoVenda" placeholder="Preço de venda"   ><br>
 	<input type="number" name="desconto" placeholder="Desconto em %"  ><br>
-	<input type="number" name="qtdEstoque" placeholder="Quantidade em estoque"  ><br>
+
 	<textarea name="descricao" placeholder="Entre com informação adicional do produto"   ></textarea><br>
-	
-	
 	<section id="boxImgs">
 		<input type="file" id="img1" class="imgs" accept="image/*"
 		 onchange="preview_image(event, this.id)"
 		 name="imgnomes">
+		 
 		<input type="hidden"id="base_img1" 
 		name="imagens">
 		<img id="output_image_img1"/>
-		<hr><br>
-		
+		<span class="" id="tamanho_img1"></span>
+		<hr><br>	
+		<!--
 		<input type="file" id="img2" class="imgs" accept="image/*"
 		 onchange="preview_image(event, this.id)"
 		 name="imgnomes">
 		<input type="hidden"id="base_img2" 
 		name="imagens">
 		<img id="output_image_img2"/>
+		<span class="" id="tamanho_img2"></span>
 		<hr><br>
-
-
+		-->
 	</section>	
 	<a href="javascript:addImg();">Add Imagem</a	
-	
 	<br>
 	<hr>
-	<button>Salvar</button>		
+	<button id="bot">Salvar</button>		
 </form>
 
 

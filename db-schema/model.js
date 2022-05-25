@@ -25,18 +25,27 @@ const UsuarioSchema = new Schema({
 })
 UsuarioSchema.plugin(passportLocalMongoose);
 
+/*
+Mudancas:
+tirar fabricante,
+limitar imagens entre 2 e 5
+tirar preco original,
+refatorar desconto - agorar sera deafult 0,
+tiar peso
+tirar qtdEstoque 
+colocar :tenhoparavender
+
+
+*/
 
 const ProdutoSchema = new Schema({
-	fabricante: String,
 	nome: String,
 	imagens:[String],
 	imgnomes:[String],
 	precoVenda: Number,
-	precoOriginal: Number,
-	desconto: Number,
-	pesoMl:Number,
+	desconto: {type:Number, default:0},
 	descricao: String,
-	qtdEstoque:Number	
+	tenho: String	
 })
 
 const CatalogoSchema = new Schema({
