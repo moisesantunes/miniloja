@@ -3,21 +3,22 @@ let qtd=1;
 let tmns={}
 
 function addImg(){
-	if(qtd <5){
-		qtd = qtd +1
 		let box = document.getElementById("boxImgs")
-//		let count= box.querySelectorAll(".imgs")
+		if(box.children.length <5){
+//	let count= box.querySelectorAll(".imgs")
 		let elemimg=`
+		<article id="imgs_tools_${box.children.length +1}">
 		<input type="file" class="imgs"
-			id="img${qtd}" 
+			id="img${box.children.length+1}" 
 		 	name="imgnomes" accept="image/*"
 			onchange="preview_image(event, this.id)"
-			name="imgs">
+			name="imgs" required>
 		<input type="hidden" 
-			id="base_img${qtd}" name="imagens">
-		<img id="output_image_img${qtd}"/>
-		<span class="" id="tamanho_img${qtd}"></span>
-		<hr><br> `
+			id="base_img${box.children.length +1}" name="imagens">
+		<img id="output_image_img${box.children.length+1 }"/>
+		<span class="" id="tamanho_img${box.children.length +1}"></span>
+		<hr><br>
+		</article> `
 		box.innerHTML+=elemimg;
 	}else{
 		alert("já tem 5 imagens, é o maximo")
@@ -26,6 +27,15 @@ function addImg(){
 }
 
 
+function remImg(){
+
+	const box = document.getElementById("boxImgs");
+	if(box.children.length <=1){
+		 alert("só tem um e precisa de pelo menos uma")
+	}else{
+		box.removeChild(box.lastElementChild);
+	}
+}
 
 
 function preview_image(event, id){

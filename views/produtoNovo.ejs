@@ -12,21 +12,27 @@
 
 <form action="/cadastrarProduto/<%= catalogo %>" method="post" >
 
-	<input type="text" name="nome"  placeholder="Nome do produto" ><br>
-	<input type="number" name="precoVenda" placeholder="Preço de venda"   ><br>
+	<input type="text" name="nome" required placeholder="Nome do produto" ><br>
+	<input type="number" name="precoVenda" required placeholder="Preço de venda"   ><br>
 	<input type="number" name="desconto" placeholder="Desconto em %"  ><br>
-
+	<select id="cars" name="tenho">
+		<option value="sim">Tenho pra vender</option>
+		<option value="nao">Não Tenho agora</option>
+	</select><br>
 	<textarea name="descricao" placeholder="Entre com informação adicional do produto"   ></textarea><br>
 	<section id="boxImgs">
+		<article id="tools_imgs_1">
 		<input type="file" id="img1" class="imgs" accept="image/*"
 		 onchange="preview_image(event, this.id)"
-		 name="imgnomes">
+		 name="imgnomes" required>
 		 
 		<input type="hidden"id="base_img1" 
 		name="imagens">
 		<img id="output_image_img1"/>
 		<span class="" id="tamanho_img1"></span>
-		<hr><br>	
+		<hr><br>
+		</article>
+			
 		<!--
 		<input type="file" id="img2" class="imgs" accept="image/*"
 		 onchange="preview_image(event, this.id)"
@@ -38,7 +44,11 @@
 		<hr><br>
 		-->
 	</section>	
-	<a href="javascript:addImg();">Add Imagem</a	
+
+	•<a href="javascript:addImg();">Add Imagem</a>
+	•|•
+	<a href="javascript:remImg();">Rem Imagem</a>•
+			
 	<br>
 	<hr>
 	<button id="bot">Salvar</button>		
