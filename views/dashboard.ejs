@@ -20,6 +20,8 @@
 		<a href="/dashboardForm" >Criar</a> 
 	<%} else{ %>
 		<a href="/dashboardEdit" >Editar</a> %>
+	<a href="/meusCatalogos" >Meus Catalogos</a>
+	<a href="/criarCatalogo" >Criar Catalogo</a>
 	<%}%>
 </p>
 <% if(!dash){ %>
@@ -32,19 +34,7 @@
 	<p class=''><%= dash.endereco%> | <%= dash.numCasa %> |<%= dash.complemento %></p>
 	<p class=''><%= dash.telefone[0]%> |<%= dash.telefone[1]%></p>
 <% } %>
-<!--
-<form action="/salvarDashboard" method="post" accept-charset="utf-8">
-  <input type="text" name="nomeComp" id="" placeholder="Nome Completo">
-  <input type="email" name="email" id="email" placeholder="Email">
-  <input type="text" name="cep" id="" placeholder="cep">
-  <input type="text" name="endereco" id="" placeholder="Endereço">
-  <input type="number" name="numCasa" id="num_casa" placeholder="Numero da casa">
-  <input type="text" name="complemento" id="" placeholder="Complemento">
-  <input type="tel" name="telefone" id="telefone" placeholder="telefone">
-  <input type="tel" name="telefone" id="telefone" placeholder="telefone">
-  <input type="submit" value="Salvar">
-</form>
--->
+  
 
 </body>
 

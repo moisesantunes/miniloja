@@ -45,7 +45,12 @@ const ProdutoSchema = new Schema({
 	precoVenda: Number,
 	desconto: {type:Number, default:0},
 	descricao: String,
-	tenho: String	
+	tenho: String,
+	categoria:{
+		type: String, 
+		enum: ["geral","beleza","casa","pessoa","bugigangas"],
+		default:"geral"
+	}	
 })
 
 const CatalogoSchema = new Schema({
@@ -53,7 +58,6 @@ const CatalogoSchema = new Schema({
 	nome:String,
 	estado: String,
 	descricao: String,
-	categoria:String,
 	produtos:[ProdutoSchema]
 })
 

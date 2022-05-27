@@ -9,15 +9,22 @@
 <body>
 	<h1 id="topo">Multicatalogos</h1>
 	<%= catalogo %>
-
+•<a href="/meusCatalogos">Meu Catalogo</a>
 <form action="/cadastrarProduto/<%= catalogo %>" method="post" >
 
 	<input type="text" name="nome" required placeholder="Nome do produto" ><br>
 	<input type="number" name="precoVenda" required placeholder="Preço de venda"   ><br>
 	<input type="number" name="desconto" placeholder="Desconto em %"  ><br>
-	<select id="cars" name="tenho">
+	<select id="setenho" name="tenho">
 		<option value="sim">Tenho pra vender</option>
 		<option value="nao">Não Tenho agora</option>
+	</select><br>
+	<select id="categorias" name="categoria">
+		<option value="geral">Geral</option>
+		<option value="beleza">Beleza</option>
+		<option value="casa">Casa</option>
+		<option value="pessoa">Pessoa</option>
+		<option value="bugigangas">Bugigangas</option>
 	</select><br>
 	<textarea name="descricao" placeholder="Entre com informação adicional do produto"   ></textarea><br>
 	<section id="boxImgs">
