@@ -14,6 +14,9 @@
 		<%= user.username %>
 	<%}%>
 </h1>
+-----------
+modo edicao de catalogo
+-----------
 <nav class="" >
 	•<a href="/dashboard" >Cadastro</a>•|
 	•<a href="/" >Inicio</a>•|
@@ -21,11 +24,13 @@
 </nav>
 <br>
 <h2 class="">Criação de catalogo</h2>
-<form action="/salvarCatalogo" method="post" accept-charset="utf-8"><br>
-  <input type="text" name="nome" id="" placeholder="Nome do catalogo"><br>
-  <input type="text" name="estado" id="catEstado" value="ativo" readonly><br>
-  <textarea class="" name="descricao" placeholder="Descrição do catalogo aqui">
-  </textarea><br>
+<form action="/editarCatalogo?_method=PUT" method="post" accept-charset="utf-8"><br>
+	<input type="text" name="nome" value="<%= catalogo.nome %>" id="" placeholder="Nome do catalogo"><br>
+	<select id="catEstado" name="estado">
+		<option value="ativo">Ativo</option>
+		<option value="inativo">Inativo</option>
+	</select><br>
+  <textarea class="" name="descricao"><%= catalogo.descricao %></textarea><br>
   <input type="submit" value="Salvar">
 </form>
 </body>

@@ -37,6 +37,7 @@ app.use(flash())
 const rget = require("./routes/rget.js")
 const rpost= require("./routes/rpost.js")
 const rput= require("./routes/rput.js")
+const rdel= require("./routes/rdel.js")
 const modelDb= require("./db-schema/model.js")
 
 passport.use(modelDb.Usuario.createStrategy())
@@ -82,9 +83,13 @@ app.get("/dashboard", rget.dashboard)
 app.get("/dashboardForm", rget.dashboardForm)
 app.get("/dashboardEdit", rget.dashboardEdit)
 
-app.get("/meusCatalogos", rget.meusCatalogos)
+app.get("/meuCatalogo", rget.meuCatalogo)
 app.get("/criarCatalogo", rget.criarCatalogo)
 app.get("/detalharCatalogo/:catalogoId", rget.detalharCatalogo)
+app.get("/editarCatalogo/", rget.editarCatalogo)
+
+app.get("/editarProduto/:prodId", rget.editarProduto)
+
 
 app.get("/cadastrarProduto/:catalogoId", rget.cadastrarProduto)
 
@@ -103,7 +108,11 @@ app.post("/cadastrarProduto/:catalogoId", rpost.cadastrarProduto)
 //rotas put
 app.put("/salvarDashboard", rput.dashboardEdit)
 
+app.put("/editarCatalogo",rput.editarCatalogo)
 
+app.put("/editarProduto/:prodId",rput.editarProduto)
+
+app.delete("/excluirProduto/:prodid", rdel.excluirProduto)
 
 app.listen(3000, ()=>{
 	console.log("ta onn")

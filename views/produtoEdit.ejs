@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Page Title</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
+</head>
+<body>
+	<h1 id="topo">Multicatalogos</h1>
+	<%= catalogo %><br>
+	
+	•<a href="/meuCatalogo">Meu Catalogo</a>
+	<%= produto._id %>
+	<form action="/editarProduto/<%= produto._id %>?_method=PUT" method="post" >
+
+	<input type="text" name="nome" required value="<%= produto.nome %>" ><br>
+	<input type="number" name="precoVenda"value="<%= produto.precoVenda %>" required placeholder="Preço de venda"   ><br>
+	<input type="number" name="desconto" value="<%= produto.desconto%>"  placeholder="Desconto em %"  ><br>
+	<select id="setenho" name="tenho">
+		<option value="sim" <%= produto.tenho == 'sim' ? 'selected':'' %>  >Tenho pra vender</option>
+		<option value="nao" <%= produto.tenho == 'nao' ? 'selected':'' %>  >Não Tenho agora</option>
+	</select><br>
+	<select id="categorias" name="categoria">
+		<option value="geral"<%= produto.categoria == 'geral' ? 'selected':'' %>>Geral</option>
+		<option value="beleza"<%= produto.categoria == 'beleza' ? 'selected':'' %>>Beleza</option>
+		<option value="casa" <%= produto.categoria == 'casa' ? 'selected':'' %>>Casa</option>
+		<option value="pessoa" <%= produto.categoria == 'pessoa' ? 'selected':'' %>>Pessoa</option>
+		<option value="bugigangas" <%= produto.categoria == 'bugingagas' ? 'selected':'' %>>Bugigangas</option>
+	</select><br>
+	<textarea name="descricao" ><%= produto.descricao %></textarea><br>
+	<section id="boxImgs">
+	<% produto.imagens.forEach((item,index)=>{ %>
+		<article id="tools_imgs_<%= index+1%>">
+		<input type="file" id="img<%= index+1%>" class="imgs" accept="image/*"
+		 onchange="preview_image(event, this.id)"
+		 name="imgnomes" >
+		 
+		<input type="hidden"id="base_img<%= index+1%>" 
+		name="imagens" value="<%= item %>">
+		<img src="<%= item %>" id="output_image_img<%= index+1%>"/>
+		<span class="" id="tamanho_img<%= index+1%>"></span>
+		<hr><br>
+		</article>
+	<%})%>
+			
+		<!--
+		<input type="file" id="img2" class="imgs" accept="image/*"
+		 onchange="preview_image(event, this.id)"
+		 name="imgnomes">
+		<input type="hidden"id="base_img2" 
+		name="imagens">
+		<img id="output_image_img2"/>
+		<span class="" id="tamanho_img2"></span>
+		<hr><br>
+		-->
+	</section>	
+
+	•<a href="javascript:addImg();">Add Imagem</a>
+	•|•
+	<a href="javascript:remImg();">Rem Imagem</a>•
+			
+	<br>
+	<hr>
+	<button id="bot">Salvar</button>		
+</form>
+
+
+<script src="/js/script.js"></script>
+<!--
+<script >
+(function () { var script = document.createElement('script'); script.src="//cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() } })();
+</script>
+-->
+</body>
+</html>

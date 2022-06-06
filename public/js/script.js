@@ -6,8 +6,9 @@ function addImg(){
 		let box = document.getElementById("boxImgs")
 		if(box.children.length <5){
 //	let count= box.querySelectorAll(".imgs")
+let article = document.createElement("article")
+article.id= `imgs_tools_${box.children.length+1}`
 		let elemimg=`
-		<article id="imgs_tools_${box.children.length +1}">
 		<input type="file" class="imgs"
 			id="img${box.children.length+1}" 
 		 	name="imgnomes" accept="image/*"
@@ -18,8 +19,10 @@ function addImg(){
 		<img id="output_image_img${box.children.length+1 }"/>
 		<span class="" id="tamanho_img${box.children.length +1}"></span>
 		<hr><br>
-		</article> `
-		box.innerHTML+=elemimg;
+		 `
+		article.innerHTML =elemimg;
+		box.appendChild(article)
+	//	box.innerHTML+=elemimg;
 	}else{
 		alert("já tem 5 imagens, é o maximo")
 	}

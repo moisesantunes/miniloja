@@ -41,7 +41,6 @@ colocar :tenhoparavender
 const ProdutoSchema = new Schema({
 	nome: String,
 	imagens:[String],
-	imgnomes:[String],
 	precoVenda: Number,
 	desconto: {type:Number, default:0},
 	descricao: String,
@@ -63,9 +62,9 @@ const CatalogoSchema = new Schema({
 
 
 const DashboardSchema = new Schema({
-	idUsuario:String,
+	idUsuario:{type: String, unique:true},
 	nomeUsuario:String,
-	email:String,
+	email:{type:String, unique:true},
 	nomeComp: String,
 	endereco: String,
 	cep:String,

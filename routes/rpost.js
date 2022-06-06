@@ -33,7 +33,7 @@ exports.salvarCatalogo= async (req, res)=>{
 	let Catalogo=  await new modelDb.Catalogo(catalogo)
 	try{
 		Catalogo.save()
-		res.redirect("/meusCatalogos")
+		res.redirect("/meuCatalogo")
 	}catch{
 		response.status(500).send(error)
 	}
@@ -61,7 +61,7 @@ exports.cadastrarProduto = async (req, res)=>{
 	catalogo.produtos.push(req.body)
 	try{
 		catalogo.save()
-		res.redirect("/meusCatalogos")
+		res.redirect("/meuCatalogo")
 	}catch(error){
 		response.status(500).send(error)
 	}

@@ -19,14 +19,15 @@ exports.produtoNovo =(req, res)=>{
 */
 // rotas dos catalogos
 
-exports.meusCatalogos =(req, res)=>{
+exports.meuCatalogo =(req, res)=>{
 	if(!req.user)res.redirect("/login")
-	modelDb.Catalogo.find({idCriador:req.user._id},(err,cats)=>{
+	modelDb.Catalogo.findOne({idCriador:req.user._id},
+		(err,cat)=>{
 		if(err)return err;
-		console.log(cats)
+	//	console.log(cat)
 		res.render("meusCatalogos",{
 			user:req.user, 
-			catalogos:cats
+			catalogo:cat
 		})
 	})	
 }
@@ -39,14 +40,12 @@ exports.detalharCatalogo= (req, res)=>{
 	if(!req.user)res.redirect("/login")
 	modelDb.Catalogo.findOne({ _id:req.params.catalogoId},(err,cat)=>{
 		if(err)return err;
-		console.log(cat);
+//		console.log(cat);
 		res.render("catalogo",{
 		user:req.user,
 		produtos:cat.produtos
 		})
-
-	})
-	
+	})	
 }
 
 exports.criarCatalogo=(req,res)=>{
@@ -56,7 +55,31 @@ exports.criarCatalogo=(req,res)=>{
 	})
 }
 
+exports.editarCatalogo= (req, res)=>{
+	if(!req.user)res.redirect("/login")
+	modelDb.Catalogo.findOne({ idCriador:req.user._id},(err,cat)=>{
+		if(err)return err;
+//		console.log("para editar",cat);
+		res.render("catalogoEdit",{
+			user:req.user,
+			catalogo:cat
+		})
+	})			
+}
 
+exports.editarProduto =(req,res)=>{
+	if(!req.user)res.redirect("/login")
+	modelDb.Catalogo.findOne({ idCriador:req.user._id},
+	(err,cat)=>{
+		if(err)return err;
+//		console.log("este é: ", cat)
+		res.render("produtoEdit",{
+		user:req.user,
+		produto: cat.produtos.id(req.params.prodId),
+		catalogo:cat.nome
+	})	
+	})
+}
 //rotas do dasvoard
 exports.dashboard =(req, res) =>{
 	if(req.user){
@@ -64,7 +87,7 @@ exports.dashboard =(req, res) =>{
 			if(err){
 				return err;
 			}
-			console.log(board)
+//			console.log(board)
 			res.render("dashboard",{user: req.user, dash:board})
 		})
 	}else{

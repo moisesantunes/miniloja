@@ -7,31 +7,59 @@
 	<title >Meus Catalogos</title>
 </head>
 <body>
-	<h1>Meus Catalogos</h1>
-<a href="/login" >Entrar</a>|
- <a href="/signup" >Cadastrar</a>
- <hr>
+	<hr>
  <% if(user) { %>
- <h2><%= user.username %> Logado!!!</h2>
- <a href="/" >Inicio</a>
- <a href="/dashboard" >Meu Cadastro</a>
-
-<br>
- <a href="/logout" >Sair</a>
-
+	• 
+	<a href="/" >Inicio</a> •|•
+	<a href="/dashboard" >Meu Cadastro</a> •|• 
+	<a href="/logout" >Sair</a> 
+	•
+	<hr>
 <%}%>
 
-<section class="">
-<% catalogos.forEach((item,index)=>{ %>
-	<div class="">
-	<h3 class=""><%=index+1 %>-)	<%= item.nome %></h3>
-	<a href="/detalharCatalogo/<%= item._id %>" class="" >Ver catalogo</a>
-	<a href="/cadastrarProduto/<%= item._id %>" class="" > Cadastrar um Produto</a>
 
-	</div>	
-<%})%>
+ <% if(catalogo) { %>
 
-</section>
+	<h1>Nome: <%= catalogo.nome %></h1>
+ 	<h2>Proprietario: <%= user.username %></h2>
+ 	<p ><%= catalogo.descricao %></p>
+	•<a href="/editarCatalogo" >Editar Catalogo</a>•|
+	•<a href="/editarProduto" >Editar Produtos</a>•
+
+	<section class="produtos">
+		<% catalogo.produtos.forEach((item,index)=>{ %>
+		<div class="">
+			<h3 class=""><%=index+1 %>-)	<%= item.nome %></h3>
+			<div class="">	
+				<img src="<%= item.imagens[0] %>" >	
+			</div>
+			<p class=""> <%= item.descricao %></p>
+			<p class="">Valor: R$<%= item.precoVenda.toFixed(2).replace(".",",") %></p>
+			<p class="">Desconto: <%= item.desconto %>%</p>
+			<p class="">Com desconto:
+				 R$<%= (item.precoVenda-(item.desconto/100 * item.precoVenda)).toFixed(2).replace(".",",") %>
+			</p>
+			•<a href="/editarProduto/<%= item._id%>" >Editar Produto| <%= item._id%></a>•
+
+		</div>	
+		<%})%>
+	</section>
+	<% if(catalogo.produtos.length == 0) { %>	
+		<p class=" ">Você ainda não cadastrou alguma coisa</p>
+		<a href="/cadastrarProduto/<%= catalogo._id %>" class="" >Cadastrar um Produto	</a>
+	<%}else { %>
+		<a href="/cadastrarProduto/<%= catalogo._id %>" class="" >
+			Cadastrar mais um Produto.
+		</a>
+	<%}%>
+<%}else { %>
+ 	<h2>Olá  <%= user.username %></h2>
+	<p class="">
+	Você ainda não montou seu catalogo
+	<a href="/criarCatalogo">entre aqui para criar</a>
+	</p>
+<%}%>
+
 
 <script src="/js/script.js">	</script>
 </body>
