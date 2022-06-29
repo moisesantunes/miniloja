@@ -45,11 +45,13 @@ const ProdutoSchema = new Schema({
 	desconto: {type:Number, default:0},
 	descricao: String,
 	tenho: String,
+	criadoEm:{type:Date, default:Date.now},
 	categoria:{
 		type: String, 
 		enum: ["geral","beleza","casa","pessoa","bugigangas"],
 		default:"geral"
-	}	
+	},
+	idCatalogo:String	
 })
 
 const CatalogoSchema = new Schema({

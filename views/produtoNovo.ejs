@@ -4,9 +4,12 @@
 <title>Page Title</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+<%- include("partials/fonts.ejs") %>
 	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
 </head>
 <body>
+		<img id="preview"/>
+
 	<h1 id="topo">Multicatalogos</h1>
 	<%= catalogo %>
 •<a href="/meuCatalogo">Meu Catalogo</a>
@@ -29,8 +32,8 @@
 	<textarea name="descricao" placeholder="Entre com informação adicional do produto"   ></textarea><br>
 	<section id="boxImgs">
 		<article id="tools_imgs_1">
-		<input type="file" id="img1" class="imgs" accept="image/*"
-		 onchange="preview_image(event, this.id)"
+		<input type="file" ccapture="user" id="img1" class="imgs" accept="image/*"
+		 onchange="ajustar(event, this.id)"
 		 name="imgnomes" required>
 		 
 		<input type="hidden"id="base_img1" 

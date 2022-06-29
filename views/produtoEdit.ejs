@@ -33,7 +33,7 @@
 	<% produto.imagens.forEach((item,index)=>{ %>
 		<article id="tools_imgs_<%= index+1%>">
 		<input type="file" id="img<%= index+1%>" class="imgs" accept="image/*"
-		 onchange="preview_image(event, this.id)"
+		 onchange="ajustar(event, this.id)"
 		 name="imgnomes" >
 		 
 		<input type="hidden"id="base_img<%= index+1%>" 
@@ -46,7 +46,7 @@
 			
 		<!--
 		<input type="file" id="img2" class="imgs" accept="image/*"
-		 onchange="preview_image(event, this.id)"
+		 onchange="ajustar(event, this.id)"
 		 name="imgnomes">
 		<input type="hidden"id="base_img2" 
 		name="imagens">
@@ -66,11 +66,17 @@
 </form>
 
 
+<form action="/excluirProduto/<%= produto._id %>?_method=DELETE" method="post" >
+<h3>Clique aqui para excluir: <%= produto.nome %>?</h3>
+<button id="bot">Confirma</button>		
+
+</form>
+
 <script src="/js/script.js"></script>
-<!--
+
 <script >
 (function () { var script = document.createElement('script'); script.src="//cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() } })();
 </script>
--->
+
 </body>
 </html>

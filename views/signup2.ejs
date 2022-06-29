@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Page Title</title>
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
+	<title >Bem vindo a multicatalogo</title>
+</head>
+<body>
+	<h1>Sign Up</h1>
+	<form action="/signup" method="post">
+    	<section>
+        	<label for="username">Username</label>
+        	<input id="username" name="username" type="text" autocomplete="username" required autofocus>
+    	</section>
+    	<section>
+        	<label for="current-password">Password</label>
+        	<input id="current-password" name="password" type="password" autocomplete="current-password" required>
+    	</section>
+    	<button type="submit">Sign in</button>
+	</form>
+<hr>
+<% if(mensagem.name =="UserExistsError"){ %>
+	Nome de usuaario já cadastrado
+<%}%>
+<br>
+<a href="/" >inicio</a>
+	<script src="/js/script.js">	</script>
+</body>
+</html>

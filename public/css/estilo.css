@@ -1,16 +1,94 @@
 *{
 	box-sizing:border-box;
+	margin:0;
+	padding:0;
+}
+*:before, *:after{
+	margin:0;
+	padding:0;	
+}
+/**** Corpo principal ****/
+body{
+	font-family: 'Ubuntu';	
 }
 
-h1{
-	color:red
+.container-fluid{
+	background-color:orange;
 }
-#topo{
-	color blue
+.cartao{
+	height:25vh;
+	display:flex;
+	flex-direction: row;			
 }
-img{
-	max-width:200px;
+.cartao .cartao-img{
+	bborder:1px solid blue;
+	width:40%;	
+	padding:1%;
+	display: flex;
 }
-.produtos img{
-	width:60px
+ .cartao .cartao-corpo{
+	bborder:1px solid red;
+	width:60%;
+}
+
+ .cartao .cartao-corpo h4{
+ 	font-size: 4vmin;
+ }
+ .cartao .cartao-corpo p{
+ 	 	font-size: 3.5vmin;
+ }
+.cartao .cartao-img img{
+	height:100%;
+	max-width:100%;
+	margin:auto;
+}
+
+.produto-nome{	
+
+	font-size:8vmin;
+}
+.produto .descricao::first-letter{
+	font-size:175%;	
+}
+.produto p{
+	font-size:4vmin;
+}
+.produto .produto-img{
+
+}
+#carrocel .car-img{
+	border:1px solid red;
+	height:45vh;
+	width:100%;
+	position: relative;		
+}
+#carrocel img.retrato{
+	position: absolute;
+	left:50%;
+	transform: translateX(-50%);
+	margin:0;
+	height:100%;
+}
+#carrocel img.paisagem{
+	width:100%;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#carrocel button{
+		background-color:orange;
+
+}
+@media (min-width: 700px) {
+	.cartao{
+  		height:25vmax;
+  			
+	}
+	#carrocel .car-img{
+	  	height:70vmin;
+	
+	}
+   
+  
 }

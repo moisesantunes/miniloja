@@ -18,6 +18,24 @@ exports.produtoNovo =(req, res)=>{
 
 */
 // rotas dos catalogos
+exports.inicio =(req,res)=>{
+	modelDb.Catalogo.find({},(err, cats)=>{
+		if(err)res.send('Algo de errado não está certo, tenta de novo')
+		let lista=[]
+		cats.forEach((cat)=>{
+			lista = [...lista,...cat.produtos]
+		})
+		lista = lista.sort((a,b)=> b.criadoEm - a.criadoEm)
+		console.log("essa e a lista toda tabalhada ",lista.length)
+		res.render("home.ejs",{
+			user:req.user,
+			//	cats:cats,
+			produtos:lista
+		})
+	})	
+}
+
+
 
 exports.meuCatalogo =(req, res)=>{
 	if(!req.user)res.redirect("/login")
@@ -37,16 +55,29 @@ exports.meuCatalogo =(req, res)=>{
 
 
 exports.detalharCatalogo= (req, res)=>{
-	if(!req.user)res.redirect("/login")
+//	if(!req.user)res.redirect("/login")
 	modelDb.Catalogo.findOne({ _id:req.params.catalogoId},(err,cat)=>{
 		if(err)return err;
 //		console.log(cat);
 		res.render("catalogo",{
 		user:req.user,
-		produtos:cat.produtos
+		catalogo:cat
 		})
 	})	
 }
+
+exports.verProduto = (req, res)=>{
+//	if(!req.user)res.redirect("/login")
+	modelDb.Catalogo.findOne({ _id:req.params.catalogoId},(err,cat)=>{
+		if(err)return err;
+	console.log(cat);
+		res.render("produto",{
+		user:req.user,
+		produto:cat.produtos.id(req.params.prodId)
+		})
+	})	
+}
+
 
 exports.criarCatalogo=(req,res)=>{
 	if(!req.user)res.redirect("/login")

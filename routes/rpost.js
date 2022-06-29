@@ -57,12 +57,18 @@ exports.salvarDashboard = async (req, res)=>{
 }
 
 exports.cadastrarProduto = async (req, res)=>{
+//console.log(req.body)
+//res.redirect("/meuCatalogo")
+	let obj = req.body
+	obj.idCatalogo= req.params.catalogoId
 	let catalogo = await modelDb.Catalogo.findOne({_id:req.params.catalogoId})	
-	catalogo.produtos.push(req.body)
+
+	catalogo.produtos.push(obj)
 	try{
 		catalogo.save()
 		res.redirect("/meuCatalogo")
 	}catch(error){
 		response.status(500).send(error)
 	}
+
 }

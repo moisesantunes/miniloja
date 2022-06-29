@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
-	<title >Meus Catalogos</title>
+	<title >Meu Catalogo</title>
 </head>
 <body>
 	<hr>
@@ -23,8 +23,7 @@
 	<h1>Nome: <%= catalogo.nome %></h1>
  	<h2>Proprietario: <%= user.username %></h2>
  	<p ><%= catalogo.descricao %></p>
-	•<a href="/editarCatalogo" >Editar Catalogo</a>•|
-	•<a href="/editarProduto" >Editar Produtos</a>•
+	•<a href="/editarCatalogo" >Editar Catalogo</a>•
 
 	<section class="produtos">
 		<% catalogo.produtos.forEach((item,index)=>{ %>
@@ -33,11 +32,14 @@
 			<div class="">	
 				<img src="<%= item.imagens[0] %>" >	
 			</div>
+			
 			<p class=""> <%= item.descricao %></p>
 			<p class="">Valor: R$<%= item.precoVenda.toFixed(2).replace(".",",") %></p>
-			<p class="">Desconto: <%= item.desconto %>%</p>
+			<p class="">Desconto: 
+			<%= item.desconto %>%
+			</p>
 			<p class="">Com desconto:
-				 R$<%= (item.precoVenda-(item.desconto/100 * item.precoVenda)).toFixed(2).replace(".",",") %>
+ R$<%= (item.precoVenda-(item.desconto/100 * item.precoVenda)).toFixed(2).replace(".",",") %>
 			</p>
 			•<a href="/editarProduto/<%= item._id%>" >Editar Produto| <%= item._id%></a>•
 

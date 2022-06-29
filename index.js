@@ -62,10 +62,7 @@ mongoose.connect(url,connectionParams)
     })
 
 
-app.get("/",(req,res)=>{
-	//console.log(req.session)
-	res.render("home",{user:req.user})
-})
+app.get("/",rget.inicio)
 
 
 
@@ -85,31 +82,22 @@ app.get("/dashboardEdit", rget.dashboardEdit)
 
 app.get("/meuCatalogo", rget.meuCatalogo)
 app.get("/criarCatalogo", rget.criarCatalogo)
-app.get("/detalharCatalogo/:catalogoId", rget.detalharCatalogo)
 app.get("/editarCatalogo/", rget.editarCatalogo)
-
-app.get("/editarProduto/:prodId", rget.editarProduto)
-
+app.get("/verCatalogo/:catalogoId", rget.detalharCatalogo)
 
 app.get("/cadastrarProduto/:catalogoId", rget.cadastrarProduto)
-
-
-
+app.get("/editarProduto/:prodId", rget.editarProduto)
+app.get("/verProduto/:prodId/em/:catalogoId", rget.verProduto)
 
 //rotas post
-//app.post("/produto/novo", rpost.produtoNovo)
 
 app.post("/salvarDashboard", rpost.salvarDashboard)
-
 app.post("/salvarCatalogo", rpost.salvarCatalogo)
-
 app.post("/cadastrarProduto/:catalogoId", rpost.cadastrarProduto)
 
 //rotas put
 app.put("/salvarDashboard", rput.dashboardEdit)
-
 app.put("/editarCatalogo",rput.editarCatalogo)
-
 app.put("/editarProduto/:prodId",rput.editarProduto)
 
 app.delete("/excluirProduto/:prodid", rdel.excluirProduto)

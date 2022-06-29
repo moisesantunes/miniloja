@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title ><%= produto.nome%></title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<%- include('partials/fonts.ejs') %>
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
+
+<script src="//cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script>
+
+</head>
+<body onload="corrigirImg()"> 
+	<div class="container">
+	<% if(user) { %>
+		<h2>Olá <%= user.username %></h2>
+		<nav class="nav ">
+			<a href="/" >Inicio</a>
+			&nbsp|&nbsp
+			<a href="/dashboard" >Meu Cadastro</a>
+			&nbsp|&nbsp
+			<a href="/logout" >Sair</a>
+		 </nav>
+		<hr>
+	<%}else{%>
+ 		<nav class="nav ">
+ 			<a href="/" >Inicio</a>
+			&nbsp|&nbsp
+			<a href="/login"  class="" >Entrar</a>
+			&nbsp|&nbsp
+			<a href="/signup" class="" >Cadastrar</a>
+		</nav>
+		<hr>
+	<%}%>
+	</div>
+	
+	<header class="container">
+		<h1 class="text-center produto-nome"><%= produto.nome %></h1>
+	</header>
+	
+	<section class="produto container">
+	<div class="row ">
+	<div class="carrocel-container col-12 col-md-6">
+		<div id="carrocel" class="carousel slide" data-bs-ride="carousel">
+  			<div class="carousel-inner">
+ 				<% produto.imagens.forEach((i,index,arr)=>{ %>
+    			<div class="carousel-item car-img <%= index == 0 ? "active": "" %> ">
+      				<img class="ppaisagem" src="<%= i%>" class="d-block" alt="imag-index">
+    			</div>
+    			<%})%>	 
+  			</div>
+  			<button class="carousel-control-prev" type="button" data-bs-target="#carrocel" data-bs-slide="prev">
+    			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+   				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carrocel" data-bs-slide="next">
+    			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+    			<span class="visually-hidden">Next</span>
+  			</button>
+		</div>
+		</div>
+		<div class="produto-info col-12 col-md-6 ">
+		<p class="descricao mb-1"><%= produto.descricao %></p>
+		<p class="valor m-0">Valor:
+			<strong class="destaque"> 
+				R$<%= produto.precoVenda.toFixed(2).replace(".",',') %>
+			</strong>
+		</p>
+		<p class="desconto m-0">Desconto: 
+			<strong class="destaque"> 
+				<%= produto.desconto %>%
+			</strong>
+		</p>   
+        <p class="valorDes m-0">Com desconto:
+        	<strong class="destaque"> 
+				R$<%= (produto.precoVenda-(produto.desconto/100 * produto.precoVenda)).toFixed(2).replace(".",",") %>
+			</strong>
+		</p>
+		</div>	
+		</div>	
+
+		
+	</section>
+<br>
+<br>
+<br>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script src="/js/script.js">	</script>
+</body>
+</html>
